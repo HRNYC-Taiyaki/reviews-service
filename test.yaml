@@ -1,0 +1,23 @@
+scenarios:
+    - flow:
+        - get:
+            url: "/reviews"
+            json:
+              product_id: "{ product_id }"
+config:
+  target: "http://127.0.0.1:3000"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+      rampTo: 50
+      name: "Warm up the application"
+    - duration: 30
+      arrivalRate: 50
+      name: "Sustained max load"
+  variables:
+    product_id:
+      - "11001"
+      - "11002"
+      - "22001"
+      - "22002"
+      - "33003"

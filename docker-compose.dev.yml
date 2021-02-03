@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+ server:
+  build:
+   context: .
+  ports:
+   - 3000:3000
+   - 9229:9229
+  environment:
+   - CONNECTIONSTRING=mongodb://mongo:27017/sdc
+  volumes:
+   - ./:/code
+  command: npm run server
+
+ mongo:
+  image: mongo:4.2.8
+  ports:
+   - 27018:27017
+  volumes:
+   - mongodb:/data/db
+   - mongodb_config:/data/configdb
+volumes:
+ mongodb:
+ mongodb_config:
