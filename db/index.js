@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
-var mongoUri = "mongodb://localhost:27017/sdc"
+var mongoUri = "mongodb://mongo:27017/sdc"
 mongoose.Promise = Promise;
 
 // Connect Mongoose to our local MongoDB via URI specified above
-mongoose.connect(mongoUri, {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoUri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 var db = mongoose.connection;
 

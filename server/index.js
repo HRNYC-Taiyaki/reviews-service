@@ -10,10 +10,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
 app.get('/reviews', controller.getReviews)
 
 app.get('/reviews/meta', controller.getMetaData)

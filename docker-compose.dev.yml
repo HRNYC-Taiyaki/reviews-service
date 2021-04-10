@@ -9,14 +9,18 @@ services:
    - 9229:9229
   environment:
    - CONNECTIONSTRING=mongodb://mongo:27017/sdc
+   - MONGOAUTH=79Fd94PDr32
   volumes:
    - ./:/code
   command: npm run server
 
  mongo:
   image: mongo:4.2.8
+  environment:
+   - MONGO_INITDB_ROOT_USERNAME=root
+   - MONGO_INITDB_ROOT_PASSWORD=79Fd94PDr32
   ports:
-   - 27018:27017
+   - 27999:27999
   volumes:
    - mongodb:/data/db
    - mongodb_config:/data/configdb

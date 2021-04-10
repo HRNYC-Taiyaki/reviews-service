@@ -132,7 +132,7 @@ exports.addReview = function (req, res) {
   }
   )
   .then(() => res.status(200).send('New review submitted'))
-  .catch((err) => console.log('Error:', err))
+  .catch((err) => console.log('Review could not be submitted', err))
 }
 
 exports.helpful = function (req, res) {
@@ -143,7 +143,7 @@ exports.helpful = function (req, res) {
 
   Review.findOneAndUpdate(filter, update)
   .then(() => res.status(200).send('Updated successfully'))
-  .catch((err) => console.log('Error:', err))
+  .catch((err) => console.log('Could not update helpfulness', err))
 }
 
 
@@ -154,5 +154,5 @@ exports.report = function (req, res) {
 
   Review.findOneAndUpdate(filter, update)
   .then(() => res.status(200).send('Updated successfully'))
-  .catch((err) => console.log('Error:', err))
+  .catch((err) => console.log('Could not report review', err))
 }
