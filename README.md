@@ -49,7 +49,9 @@ characteristics.csv
 └── name
 ```
 
-Though the way the data was given to me was formatted Looking at the way this data was used on the front-end, whenever a user visited a product's page, all of that products review data was needed. All reviews needed to be accessable to render and all the review's meta-data was needed to show overall ratings. Thus, it made the most sense to me to organize the data similarly, using a noSQL database with 
+The original format of that data was more oritented towards a SQL database, with separate tables using foreign keys to reference data in other tables. Looking at the way this data was actually used on the front-end, however, all reviews for a given product needed to be accessable to calculate meta-data on that product's page and the format of the data that the front-end was expecting was very similar to what I imagined a noSQL schema to look like for the data given. For this reason, I decided to use a noSQL database, MongoDB specifically, and to put the data through a somewhat extensive transformation process.
+
+Because of the sheer size of the data (with each CSV having millions of entries), I imported the CSVs in their original state into MongoDB and utilized the Mongo Aggregation Pipeline to transform the data from there. Some of the commands for the transformation process can be found in the [dataTransformation folder](https://github.com/HRNYC-Taiyaki/reviews-service/blob/main/dataTransformation/mongoAggregation.js). The final shape of each "review" can be seen below, with an index created for the "product_id" key so each product's reviews could all be gathered quickly and efficiently.
 
 ```
 review
