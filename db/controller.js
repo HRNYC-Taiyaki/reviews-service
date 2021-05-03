@@ -131,7 +131,7 @@ exports.addReview = function (req, res) {
     characteristic_reviews: req.body.characteristics
   }
   )
-  .then(() => res.status(200).send('New review submitted'))
+  .then(() => res.status(201).send('New review submitted'))
   .catch((err) => console.log('Review could not be submitted', err))
 }
 
@@ -142,7 +142,7 @@ exports.helpful = function (req, res) {
   }}
 
   Review.findOneAndUpdate(filter, update)
-  .then(() => res.status(200).send('Updated successfully'))
+  .then(() => res.status(204).send('Updated successfully'))
   .catch((err) => console.log('Could not update helpfulness', err))
 }
 
@@ -153,6 +153,6 @@ exports.report = function (req, res) {
 
 
   Review.findOneAndUpdate(filter, update)
-  .then(() => res.status(200).send('Updated successfully'))
+  .then(() => res.status(204).send('Updated successfully'))
   .catch((err) => console.log('Could not report review', err))
 }
